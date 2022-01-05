@@ -7,18 +7,14 @@ let resetBtn = document.getElementById('reset')
 let milisecond = '00'
 let second = '00'
 let interval;
-let clicked = false
 
 startBtn.addEventListener('click', () => {
+  startBtn.disabled = true
   interval = setInterval(timer, 10)
-  clicked = true
 })
-if (clicked === true) {
-  startBtn.setAttribute('disabled')
-  console.log(clicked)
-}
 stopBtn.addEventListener('click', () => {
   clearInterval(interval)
+  startBtn.disabled = false
 })
 resetBtn.addEventListener('click', () => {
   clearInterval(interval)
@@ -26,7 +22,7 @@ resetBtn.addEventListener('click', () => {
   second = '00'
   secondContainer.innerText = second
   milisecondContainer.innerText = milisecond
-
+  startBtn.disabled = false
 })
 
 const timer = () => {
